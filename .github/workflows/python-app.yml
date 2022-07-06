@@ -25,7 +25,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t myimages/patients
+        docker build -t myimages/patients .
         docker build -f Dockerfile.nginx -t myimages/nginx .
 
     - name: Run Container
