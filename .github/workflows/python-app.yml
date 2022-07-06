@@ -22,3 +22,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    -name: Build Docker Image
+	run: |
+	   docker build -t myimages/patients
+           docker build -f Dockerfile.nginx -t myimages/nginx .
+
+    -name: Run Container
+	run: |
+	    docker rm -f mycontainer
+            docker rm -f mynginx
+            docker run -td --name mycontainer --network app -p 0.0.0.0:4000:4000 myimages/patients
+            docker run -td --name mynginx -p 0.0.0.0:443:443 myimages/nginx
