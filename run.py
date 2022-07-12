@@ -14,3 +14,6 @@ def page2():
 def page3():
 	return render_template('page3.html')
 
+
+if __name__ == '__main--':
+	app.run(host='0.0.0.0', port=4000, debug=True)
