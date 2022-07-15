@@ -33,4 +33,4 @@ jobs:
         docker rm -f mycontainer
         docker rm -f mynginx
         docker run -td --name mycontainer --network app -p 0.0.0.0:4000:4000 myimages/patients
-        docker run -td --name mynginx -p 0.0.0.0:443:443 myimages/nginx
+        docker run -td --name mynginx --network app -p 0.0.0.0:443:443 myimages/nginx
